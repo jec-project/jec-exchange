@@ -1,12 +1,12 @@
 /*!
- * JEC Jslet Gruntfile.js
+ * JEC Exchange Gruntfile.js
  * Copyright(c) 2017 Pascal ECHEMANN
  * Apache 2.0 Licensed
  * This is a part of the JEC projects: <https://github.com/pechemann/JEC>
  */
 
 /*
- * Provides tasks for building and testing the jec-jslet project.
+ * Provides tasks for building and testing the jec-exchange project.
  */
 module.exports = function(grunt) {
 
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
         target: "ES6",
         out: "docs/api-reference",
         readme: "README.md",
-        name: "JEC Jslet Project",
+        name: "JEC Exchange Project",
         exclude: "**/*Test*.ts"
       }
     }
@@ -93,15 +93,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   
   /*!
-   * JEC Jslet Tasks:
+   * JEC Exchange Tasks:
    */
 
-  //--> Task: builds the "jec-jslet" project:
+  //--> Task: builds the "jec-exchange" project:
   grunt.registerTask("build", ["ts:build", "copy"]);
 
-  //--> Task: builds the "jec-jslet" API documentation:
+  //--> Task: builds the "jec-exchange" API documentation:
   grunt.registerTask("doc", ["typedoc"]);
 
-  //--> Task: builds the "jec-jslet" API documentation:
+  //--> Task: builds the "jec-exchange" API documentation:
   grunt.registerTask("test", ["ts:test", "mochaTest"]);
 }

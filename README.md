@@ -5,8 +5,10 @@ JEC Exchange is a [JavaScript Entreprise Container][jec-url] project focused on 
 [![][jec-logo]][jec-url]
 
 The `jslet` package contains classes and interfaces that describe and define the 
-contracts between a jslet class a conforming JEC runtime environment.
+contracts between a jslet class and a conforming JEC runtime environment.
 
+The `security` package represents the abstract layer that must be implemented by
+a conforming JEC runtime environment to deploy secured applications.
 
 ## Requirements
 
