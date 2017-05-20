@@ -1,0 +1,48 @@
+{
+  "name": "jec-exchange",
+  "version": "1.0.0",
+  "description": "JEC Exchange - A standardized and portable way to provide JavaScript dynamic applications.",
+  "main": "lib/com/jec/exchange/index",
+  "types": "types/jec-exchange.d.ts",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pechemann/jec-exchange.git"
+  },
+  "keywords": [
+    "JEC",
+    "exchange",
+    "jslet",
+    "security",
+    "JavaScript",
+    "TypeScript",
+    "server",
+    "applications"
+  ],
+  "author": "Pascal ECHEMANN",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/pechemann/jec-exchange/issues"
+  },
+  "homepage": "https://github.com/pechemann/jec-exchange#readme",
+  "devDependencies": {
+    "@types/mocha": "^2.2.41",
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-jsdoc": "^2.1.0",
+    "grunt-mocha-test": "^0.13.2",
+    "grunt-ts": "^6.0.0-beta.15",
+    "grunt-typedoc": "^0.2.4",
+    "mocha": "^3.3.0",
+    "typedoc": "^0.6.0",
+    "typescript": "^2.3.2",
+    "typings": "^2.1.1"
+  },
+  "peerDependencies": {
+    "jec-commons": "^1.0.3"
+  }
+}
