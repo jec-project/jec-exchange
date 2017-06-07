@@ -20,30 +20,27 @@ import {expect} from "chai";
 // Class to test:
 import {SessionErrorType} from "../../../../../../src/com/jec/exchange/security/exceptions/SessionErrorType";
 
+// Utilities:
+import * as utils from "../../../../../../utils/test-utils/utilities/SessionErrorTypeTestUtils";
+
 // Test:
 describe("SessionErrorType", ()=> {
 
   describe("#SESSION_EXPIRED", ()=> {
     it("SESSION_EXPIRED should return 'errors.session.expired'", function() {
-      expect(SessionErrorType.SESSION_EXPIRED).to.equal(SESSION_EXPIRED);
+      expect(SessionErrorType.SESSION_EXPIRED).to.equal(utils.SESSION_EXPIRED);
     });
   });
   
   describe("#INVALID_SESSION_ID", ()=> {
     it("INVALID_SESSION_ID should return 'errors.session.invalidId'", function() {
-      expect(SessionErrorType.INVALID_SESSION_ID).to.equal(INVALID_SESSION_ID);
+      expect(SessionErrorType.INVALID_SESSION_ID).to.equal(utils.INVALID_SESSION_ID);
     });
   });
   
   describe("#SESSION_PERSISTENCE_FAILED", ()=> {
     it("SESSION_PERSISTENCE_FAILED should return 'errors.session.storageAccessError'", function() {
-      expect(SessionErrorType.SESSION_PERSISTENCE_FAILED).to.equal(SESSION_PERSISTENCE_FAILED);
+      expect(SessionErrorType.SESSION_PERSISTENCE_FAILED).to.equal(utils.SESSION_PERSISTENCE_FAILED);
     });
   });
 });
-
-// Utilities:
-// We store constants that should be defined by the SessionErrorType class:
-const SESSION_EXPIRED:string = "errors.session.expired";
-const INVALID_SESSION_ID:string = "errors.session.invalidId";
-const SESSION_PERSISTENCE_FAILED:string = "errors.session.storageAccessError";

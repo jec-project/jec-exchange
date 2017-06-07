@@ -20,31 +20,27 @@ import {expect} from "chai";
 // Class to test:
 import {DotFiles} from "../../../../../../src/com/jec/exchange/jslet/http/DotFiles";
 
+// Utilities:
+import * as utils from "../../../../../../utils/test-utils/utilities/DotFilesTestUtils";
+
 // Test:
 describe("DotFiles", ()=> {
 
   describe("#ALLOW", ()=> {
     it("ALLOW should return 'allow'", function() {
-      expect(DotFiles.ALLOW).to.equal(ALLOW);
+      expect(DotFiles.ALLOW).to.equal(utils.ALLOW);
     });
   });
   
   describe("#DENY", ()=> {
     it("DENY should return 'deny'", function() {
-      expect(DotFiles.DENY).to.equal(DENY);
+      expect(DotFiles.DENY).to.equal(utils.DENY);
     });
   });
   
   describe("#IGNORE", ()=> {
     it("IGNORE should return 'ignore'", function() {
-      expect(DotFiles.IGNORE).to.equal(IGNORE);
+      expect(DotFiles.IGNORE).to.equal(utils.IGNORE);
     });
   });
 });
-
-// Utilities:
-// We store constants that should be defined by the DotFiles class:
-
-const ALLOW:string = "allow";
-const DENY:string = "deny";
-const IGNORE:string = "ignore";

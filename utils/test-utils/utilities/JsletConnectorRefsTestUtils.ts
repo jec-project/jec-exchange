@@ -14,16 +14,11 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import "mocha";
-import {expect} from "chai";
+/*!
+ * This module constains utilities used by the JsletConnectorRefsTest test
+ * suite.
+ */
 
 // Utilities:
-import * as utils from "../../../../../../utils/test-utils/utilities/WebJsletFailTestUtils";
-
-// Test:
-describe("@WebJslet", ()=> {
-
-  it("should throw an error since no context has been declared for this decorator", function() {
-    expect(utils.buildClassRef).to.throw(Error);
-  });
-});
+// We store constants that should be defined by the JsletConnectorRefs class:
+export const WEB_JSLET_CONNECTOR_REF:string = "com.jec.exchange.jslet.annotations.WebJslet";

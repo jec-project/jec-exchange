@@ -17,66 +17,42 @@
 import "mocha";
 import * as chai from "chai";
 import * as spies from "chai-spies";
-import {ClassLoader, DecoratorConnectorManager, JcadContextManager, JcadContext,
-        JcadContextFactory, DecoratorConnector, AbstractDecoratorConnector,
-        Decorator} from "jec-commons";
+import {DecoratorConnectorManager, JcadContextManager, JcadContext} from "jec-commons";
 import {JsletConnectorRefs} from "../../../../../../src/com/jec/exchange/jslet/jcad/JsletConnectorRefs";
-import * as jsletParams from "../../../../../../utils/test-utils/jslet/TestJsletParams";
-
-const expect = chai.expect;
-chai.use(spies);
 
 // Annotation to test:
 import * as WebJsletAnnotation from "../../../../../../src/com/jec/exchange/jslet/annotations/WebJslet";
 
 // Utilities:
-let connector:DecoratorConnector = null;
-let context:JcadContext = null;
-let ClassRef:any = null;
-let annotated:any = null;
-class TestConnector extends AbstractDecoratorConnector {}
-class TestDecorator implements Decorator {
-  decorate(target: any, ...rest: any[]): any { return target; }
-}
-const TEST_DECORATOR:Decorator = new TestDecorator();
-const DCM:DecoratorConnectorManager = DecoratorConnectorManager.getInstance();
-const CTXM:JcadContextManager = JcadContextManager.getInstance();
-const VALID_CLASS:string = process.cwd() + "/utils/test-utils/jslet/TestJsletClass";
-const LOADER:ClassLoader = new ClassLoader();
+import * as utils from "../../../../../../utils/test-utils/utilities/WebJsletTestUtils";
+import * as jsletParams from "../../../../../../utils/test-utils/classes/TestJsletParams";
+
+// Chai declarations:
+const expect:any = chai.expect;
+chai.use(spies);
 
 // Test:
 describe("WebJslet", ()=> {
 
+  let context:JcadContext = null;
+
   before(()=> {
-    let factory:JcadContextFactory = new JcadContextFactory();
-    connector = new TestConnector(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF, TEST_DECORATOR);
-    context = factory.create();
-    CTXM.addContext(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF, context);
-    DCM.addConnector(connector, context);
+    context = utils.initContext();
   });
 
   after(()=> {
-    CTXM.removeContext(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF);
-    DCM.removeConnector(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF, context);
-    connector = null;
-    context = null;
+    utils.resetContext(context);
   });
 
   beforeEach(()=> {
-    ClassRef = LOADER.loadClass(VALID_CLASS);
-    annotated = new ClassRef();
-  });
-
-  afterEach(()=> {
-    ClassRef = null;
-    annotated =null;
+    utils.buildClassRef();
   });
 
   describe("@WebJslet", ()=> {
 
-    let ctxmSpy:any = chai.spy.on(CTXM, "getContext");
-    let dcmSpy:any = chai.spy.on(DCM, "getDecorator");
-    let decoratorSpy:any = chai.spy.on(TEST_DECORATOR, "decorate");
+    let ctxmSpy:any = chai.spy.on(JcadContextManager.getInstance(), "getContext");
+    let dcmSpy:any = chai.spy.on(DecoratorConnectorManager.getInstance(), "getDecorator");
+    let decoratorSpy:any = chai.spy.on(utils.TEST_DECORATOR, "decorate");
     let webJsletSpy:any = chai.spy.on(WebJsletAnnotation, "WebJslet");
     
     it("should invoke the JcadContextManager with the JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF reference", function() {

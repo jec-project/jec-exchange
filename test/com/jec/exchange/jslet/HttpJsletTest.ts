@@ -22,17 +22,23 @@ import {HttpRequest} from "../../../../../src/com/jec/exchange/jslet/http/HttpRe
 import {HttpResponse} from "../../../../../src/com/jec/exchange/jslet/http/HttpResponse";
 import {HttpMethod} from "jec-commons";
 
-const expect = chai.expect;
-chai.use(spies);
-
 // Class to test:
 import {HttpJslet} from "../../../../../src/com/jec/exchange/jslet/HttpJslet";
+
+// Utilities:
+import * as utils from "../../../../../utils/test-utils/utilities/HttpJsletTestUtils";
+
+// Chai declarations:
+const expect = chai.expect;
+chai.use(spies);
 
 // Test:
 describe("HttpJslet", ()=> {
 
+  let httpJslet:HttpJslet = null;
+
   beforeEach(()=>{
-    httpJslet = new TestHttpJsletClass();
+    httpJslet = new utils.TestHttpJsletClass();
   });
 
   afterEach(()=>{
@@ -58,14 +64,14 @@ describe("HttpJslet", ()=> {
 
   describe("#get()", ()=> {
     it("should return 'undefined' when 'key' is not defined", function() {
-      expect(httpJslet.get(UNDEFINED_KEY)).to.equal(undefined);
+      expect(httpJslet.get(utils.UNDEFINED_KEY)).to.equal(undefined);
     });
   });
   
   describe("#get()", ()=> {
     it("should return the right value when 'key' is defined", function() {
-      httpJslet[DEFINED_KEY] = DEFINED_KEY_VALUE;
-      expect(httpJslet.get(DEFINED_KEY)).to.equal(DEFINED_KEY_VALUE);
+      httpJslet[utils.DEFINED_KEY] = utils.DEFINED_KEY_VALUE;
+      expect(httpJslet.get(utils.DEFINED_KEY)).to.equal(utils.DEFINED_KEY_VALUE);
     });
   });
   
@@ -86,8 +92,8 @@ describe("HttpJslet", ()=> {
   
   describe("#getTemplate()", ()=> {
     it("should return the same value the passed to the getTemplate() method", function() {
-      httpJslet.setTemplate(TEMPLATE_VALUE);
-      expect(httpJslet.getTemplate()).to.equal(TEMPLATE_VALUE);
+      httpJslet.setTemplate(utils.TEMPLATE_VALUE);
+      expect(httpJslet.getTemplate()).to.equal(utils.TEMPLATE_VALUE);
     });
   });
 
@@ -102,8 +108,8 @@ describe("HttpJslet", ()=> {
 
   describe("#service()", ()=> {
     it("should invoke the callback function with the same parameters as passed to the service() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.GET);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.GET);
+      let response:HttpResponse = utils.buildResponse();
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{
         expect(req).to.equal(request);
         expect(res).to.equal(response);
@@ -114,8 +120,8 @@ describe("HttpJslet", ()=> {
 
   describe("#service()", ()=> {
     it("should invoke the doDelete() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.DELETE);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.DELETE);
+      let response:HttpResponse = utils.buildResponse();
       let spy:any = chai.spy.on(httpJslet, "doDelete");
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
       expect(spy).to.have.been.called;
@@ -124,8 +130,8 @@ describe("HttpJslet", ()=> {
   
   describe("#service()", ()=> {
     it("should invoke the doGet() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.GET);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.GET);
+      let response:HttpResponse = utils.buildResponse();
       let spy:any = chai.spy.on(httpJslet, "doGet");
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
       expect(spy).to.have.been.called;
@@ -134,8 +140,8 @@ describe("HttpJslet", ()=> {
   
   describe("#service()", ()=> {
     it("should invoke the doOptions() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.OPTIONS);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.OPTIONS);
+      let response:HttpResponse = utils.buildResponse();
       let spy:any = chai.spy.on(httpJslet, "doOptions");
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
       expect(spy).to.have.been.called;
@@ -144,8 +150,8 @@ describe("HttpJslet", ()=> {
   
   describe("#service()", ()=> {
     it("should invoke the doTrace() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.TRACE);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.TRACE);
+      let response:HttpResponse = utils.buildResponse();
       let spy:any = chai.spy.on(httpJslet, "doTrace");
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
       expect(spy).to.have.been.called;
@@ -154,8 +160,8 @@ describe("HttpJslet", ()=> {
   
   describe("#service()", ()=> {
     it("should invoke the doHead() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.HEAD);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.HEAD);
+      let response:HttpResponse = utils.buildResponse();
       let spy:any = chai.spy.on(httpJslet, "doHead");
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
       expect(spy).to.have.been.called;
@@ -164,8 +170,8 @@ describe("HttpJslet", ()=> {
   
   describe("#service()", ()=> {
     it("should invoke the doConnect() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.CONNECT);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.CONNECT);
+      let response:HttpResponse = utils.buildResponse();
       let spy:any = chai.spy.on(httpJslet, "doConnect");
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
       expect(spy).to.have.been.called;
@@ -174,8 +180,8 @@ describe("HttpJslet", ()=> {
   
   describe("#service()", ()=> {
     it("should invoke the doPut() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.PUT);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.PUT);
+      let response:HttpResponse = utils.buildResponse();
       let spy:any = chai.spy.on(httpJslet, "doPut");
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
       expect(spy).to.have.been.called;
@@ -184,35 +190,11 @@ describe("HttpJslet", ()=> {
   
   describe("#service()", ()=> {
     it("should invoke the doPost() method", function() {
-      let request:HttpRequest = buildRequest(HttpMethod.POST);
-      let response:HttpResponse = buildResponse();
+      let request:HttpRequest = utils.buildRequest(HttpMethod.POST);
+      let response:HttpResponse = utils.buildResponse();
       let spy:any = chai.spy.on(httpJslet, "doPost");
       httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
       expect(spy).to.have.been.called;
     });
   });
 });
-
-// Utilities:
-let httpJslet:HttpJslet = null;
-class TestHttpJsletClass extends HttpJslet {}
-const UNDEFINED_KEY:string = "undefinedKey";
-const DEFINED_KEY:string = "definedKey";
-const DEFINED_KEY_VALUE:string = "definedKeyValue";
-const TEMPLATE_VALUE:string = "templateValue";
-const buildRequest:Function = function(method:string):HttpRequest {
-  let request:HttpRequest = (
-    {
-      getMethod():string { return method; }
-    } as HttpRequest
-  );
-  return request;
-};
-const buildResponse:Function = function():HttpResponse {
-  let response:HttpResponse = (
-    {
-      status(statusCode:number):HttpResponse { return this; }
-    } as HttpResponse
-  );
-  return response;
-};

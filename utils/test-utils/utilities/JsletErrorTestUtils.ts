@@ -14,16 +14,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import "mocha";
-import {expect} from "chai";
+/*!
+ * This module constains utilities used by the JsletErrorTest test suite.
+ */
 
 // Utilities:
-import * as utils from "../../../../../../utils/test-utils/utilities/WebJsletFailTestUtils";
-
-// Test:
-describe("@WebJslet", ()=> {
-
-  it("should throw an error since no context has been declared for this decorator", function() {
-    expect(utils.buildClassRef).to.throw(Error);
-  });
-});
+export const ERROR_MSG:string = "invalid jslet";

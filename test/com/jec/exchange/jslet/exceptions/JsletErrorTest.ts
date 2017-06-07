@@ -20,6 +20,9 @@ import {expect} from "chai";
 // Class to test:
 import {JsletError} from "../../../../../../src/com/jec/exchange/jslet/exceptions/JsletError";
 
+// Utilities:
+import * as utils from "../../../../../../utils/test-utils/utilities/JsletErrorTestUtils";
+
 // Test:
 describe("JsletError", ()=> {
 
@@ -32,11 +35,8 @@ describe("JsletError", ()=> {
 
   describe("#message", ()=> {
     it("should return the same string as passed in the class constructor", function() {
-      let error:JsletError = new JsletError(ERROR_MSG);
-      expect(error.message).to.equal(ERROR_MSG);
+      let error:JsletError = new JsletError(utils.ERROR_MSG);
+      expect(error.message).to.equal(utils.ERROR_MSG);
     });
   });
 });
-
-// Utilities:
-const ERROR_MSG:string = "invalid jslet";

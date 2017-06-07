@@ -20,16 +20,15 @@ import {expect} from "chai";
 // Class to test:
 import {JsletConnectorRefs} from "../../../../../../src/com/jec/exchange/jslet/jcad/JsletConnectorRefs";
 
+// Utilities:
+import * as utils from "../../../../../../utils/test-utils/utilities/JsletConnectorRefsTestUtils";
+
 // Test:
 describe("JsletConnectorRefs", ()=> {
 
   describe("#WEB_JSLET_CONNECTOR_REF", ()=> {
     it("WEB_JSLET_CONNECTOR_REF should return 'com.jec.exchange.jslet.annotations.WebJslet'", function() {
-      expect(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF).to.equal(WEB_JSLET_CONNECTOR_REF);
+      expect(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF).to.equal(utils.WEB_JSLET_CONNECTOR_REF);
     });
   });
 });
-
-// Utilities:
-// We store constants that should be defined by the JsletConnectorRefs class:
-const WEB_JSLET_CONNECTOR_REF:string = "com.jec.exchange.jslet.annotations.WebJslet";
