@@ -51,3 +51,9 @@ export {SessionOwner} from "./security/session/SessionOwner";
 export {Credentials} from "./security/Credentials";
 export {SecurityConstraint} from "./security/SecurityConstraint";
 export {StaticResources} from "./security/StaticResources";
+//--> com/jec/exchange/startup/annotations/core
+export {BootstrapParams} from "./startup/annotations/core/BootstrapParams";
+//--> com/jec/exchange/startup/annotations
+export {Bootstrap} from "./startup/annotations/Bootstrap";
+//--> com/jec/exchange/annotations/jcad
+export {BootstrapConnectorRefs} from "./startup/jcad/BootstrapConnectorRefs";

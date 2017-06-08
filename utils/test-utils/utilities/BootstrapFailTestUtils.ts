@@ -17,11 +17,11 @@
 import {ClassLoader} from "jec-commons";
 
 /*!
- * This module constains utilities used by the WebJsletFailTest test suite.
+ * This module constains utilities used by the BootstrapFailTest test suite.
  */
 
 // Utilities:
-const VALID_CLASS:string = process.cwd() + "/utils/test-utils/classes/TestJsletClass";
+const VALID_CLASS:string = process.cwd() + "/utils/test-utils/bootstrap/TestBootstrapClass";
 const LOADER:ClassLoader = new ClassLoader();
 export const buildClassRef:Function = function():void {
   let ClassRef:any = LOADER.loadClass(VALID_CLASS);

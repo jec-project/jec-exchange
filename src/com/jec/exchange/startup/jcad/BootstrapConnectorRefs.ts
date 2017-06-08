@@ -14,16 +14,16 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {ClassLoader} from "jec-commons";
-
-/*!
- * This module constains utilities used by the WebJsletFailTest test suite.
+/**
+ * The <code>BootstrapConnectorRefs</code> class provides static constants that 
+ * define the references of the Bootstrap decorator connectors.
  */
-
-// Utilities:
-const VALID_CLASS:string = process.cwd() + "/utils/test-utils/classes/TestJsletClass";
-const LOADER:ClassLoader = new ClassLoader();
-export const buildClassRef:Function = function():void {
-  let ClassRef:any = LOADER.loadClass(VALID_CLASS);
-  new ClassRef();
-};
+export class BootstrapConnectorRefs {
+  
+  /**
+   * Defines the reference for connectors tha must be used to interact with the
+   * <code>@Bootstrap</code> decorator.
+   */
+  public static readonly BOOTSTRAP_CONNECTOR_REF:string =
+                               "com.jec.exchange.startup.annotations.Bootstrap";
+}

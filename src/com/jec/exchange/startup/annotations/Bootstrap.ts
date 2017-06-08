@@ -14,8 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {WebJsletParams} from "./core/WebJsletParams";
-import {JsletConnectorRefs} from "../jcad/JsletConnectorRefs";
+import {BootstrapParams} from "./core/BootstrapParams";
+import {BootstrapConnectorRefs} from "../jcad/BootstrapConnectorRefs";
 import {JcadContext, JcadContextManager, DecoratorConnectorManager} from "jec-commons";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -26,19 +26,21 @@ const DCM:DecoratorConnectorManager = DecoratorConnectorManager.getInstance();
 const CTXM:JcadContextManager = JcadContextManager.getInstance();
 
 /**
- * The <code>@WebJslet</code> decorator defines a jslet class ne the JEC
+ * The <code>@Bootstrap</code> decorator defines a bootstrap class in the JEC
  * specification.
  *
 ```javascript
-WebJslet({
-     name: "Status",
-     urlPatterns: ["/status"],
-     template: "/views/status.ejs
- })
+Bootstrap()
+export class InitApp() implements BootstrapScript {
+
+  public run(container:JecContainer):void {
+    //Rest of the code hrer...
+  }
+}
 ```
- * @param {WebJsletParams} params the parameters used to initialize this jslet.
+ * @param {BootstrapParams} params the parameters used to initialize this jslet.
  */
-export function WebJslet(params:WebJsletParams):Function {
+export function Bootstrap(params?:BootstrapParams):Function {
 
   //////////////////////////////////////////////////////////////////////////////
   // Overrides
@@ -51,8 +53,8 @@ export function WebJslet(params:WebJsletParams):Function {
     ////////////////////////////////////////////////////////////////////////////
 
     var ctx:JcadContext =
-                    CTXM.getContext(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF);
-    return DCM.getDecorator(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF, ctx)
+                CTXM.getContext(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF);
+    return DCM.getDecorator(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF, ctx)
               .decorate(target, params);
   }
 }

@@ -214,4 +214,15 @@ export interface StaticResources {
     getUrlPattern(): UrlPattern;
 }
 
+export interface BootstrapParams {
+    disabled?: boolean;
+    index?: number;
+}
+
+export function Bootstrap(params?: BootstrapParams): Function;
+
+export class BootstrapConnectorRefs {
+    static readonly BOOTSTRAP_CONNECTOR_REF: string;
+}
+
 }

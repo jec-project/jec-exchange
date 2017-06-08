@@ -14,16 +14,22 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {ClassLoader} from "jec-commons";
-
-/*!
- * This module constains utilities used by the WebJsletFailTest test suite.
+/**
+ * The <code>BootstrapParams</code> interface defines the API you must implement 
+ * to create objects passed as parameter of the <code>@Bootstrap</code>
+ * decorator.
  */
+export interface BootstrapParams {
+  
+  /**
+   * Indicates whether the bootstrap file must be ignored by the JEC container
+   * (<code>true</code>), or not (<code>false</code>).
+   */
+  disabled?:boolean;
 
-// Utilities:
-const VALID_CLASS:string = process.cwd() + "/utils/test-utils/classes/TestJsletClass";
-const LOADER:ClassLoader = new ClassLoader();
-export const buildClassRef:Function = function():void {
-  let ClassRef:any = LOADER.loadClass(VALID_CLASS);
-  new ClassRef();
-};
+  /**
+   * The order in which the bootstrap file must be executed by the JEC
+   * container.
+   */
+  index?:number;
+}
