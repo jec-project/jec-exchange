@@ -18,41 +18,29 @@ import "mocha";
 import {expect} from "chai";
 
 // Class to test:
-import {RealmType} from "../../../../../../src/com/jec/exchange/security/realms/RealmType";
+import {SessionStorageType} from "../../../../../../src/com/jec/exchange/security/session/SessionStorageType";
 
 // Utilities:
-import * as utils from "../../../../../../utils/test-utils/utilities/RealmTypeTestUtils";
+import * as utils from "../../../../../../utils/test-utils/utilities/SessionStorageTypeTestUtils";
 
 // Test:
-describe("RealmType", ()=> {
+describe("SessionStorageType", ()=> {
 
-  describe("#FILE", ()=> {
-    it("FILE should return 'file'", function() {
-      expect(RealmType.FILE ).to.equal(utils.FILE);
+  describe("#LOCAL", ()=> {
+    it("LOCAL should return 'local'", function() {
+      expect(SessionStorageType.LOCAL).to.equal(utils.LOCAL);
     });
   });
   
-  describe("#LDAP", ()=> {
-    it("LDAP should return 'ldap'", function() {
-      expect(RealmType.LDAP).to.equal(utils.LDAP);
+  describe("#DISTANT ", ()=> {
+    it("DISTANT  should return 'distant'", function() {
+      expect(SessionStorageType.DISTANT).to.equal(utils.DISTANT);
     });
   });
   
-  describe("#DB", ()=> {
-    it("DB should return 'db'", function() {
-      expect(RealmType.DB).to.equal(utils.DB);
-    });
-  });
-  
-  describe("#ADMIN_FILE", ()=> {
-    it("ADMIN_FILE should return 'admin-file'", function() {
-      expect(RealmType.ADMIN_FILE ).to.equal(utils.ADMIN_FILE);
-    });
-  });
-  
-  describe("#CUSTOM", ()=> {
+  describe("#CUSTOM ", ()=> {
     it("CUSTOM should return 'custom'", function() {
-      expect(RealmType.CUSTOM ).to.equal(utils.CUSTOM);
+      expect(SessionStorageType.CUSTOM).to.equal(utils.CUSTOM);
     });
   });
 });

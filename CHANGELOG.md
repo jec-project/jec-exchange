@@ -11,6 +11,7 @@
 - **security/login:** contains the API for adding login security utilities to a JEC container
 - **security/realms:** contains the API for adding realms to a JEC container
 - **security/crypto:** adds cryptography capabilities to a JEC container
+- **security/crypto/session/SessionStorage:** defines session storage connector typess for JEC container
 
 <a name="jec-exchange-1.1.0"></a>
 ## **1.1.0** (2017-06-17)

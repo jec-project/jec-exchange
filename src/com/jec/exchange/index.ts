@@ -55,6 +55,7 @@ export {SecurityRole} from "./security/roles/SecurityRole";
 export {Session} from "./security/session/Session";
 export {SessionId} from "./security/session/SessionId";
 export {SessionOwner} from "./security/session/SessionOwner";
+export {SessionStorageType} from "./security/session/SessionStorageType";
 //--> com/jec/exchange/security
 export {Credentials} from "./security/Credentials";
 export {SecurityConstraint} from "./security/SecurityConstraint";
