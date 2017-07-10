@@ -38,9 +38,17 @@ export {Jslet} from "./jslet/Jslet";
 //--> com/jec/exchange/security/context
 export {SecurityContext} from "./security/context/SecurityContext";
 export {SessionContext} from "./security/context/SessionContext";
+//--> com/jec/exchange/security/crypto
+export {UserHashModule} from "./security/crypto/UserHashModule";
 //--> com/jec/exchange/security/exceptions
 export {SessionError} from "./security/exceptions/SessionError";
 export {SessionErrorType} from "./security/exceptions/SessionErrorType";
+//--> com/jec/exchange/security/login
+export {AuthMethod} from "./security/login/AuthMethod";
+//--> com/jec/exchange/security/realms
+export {Realm} from "./security/realms/Realm";
+export {RealmConnector} from "./security/realms/RealmConnector";
+export {RealmType} from "./security/realms/RealmType";
 //--> com/jec/exchange/security/roles
 export {SecurityRole} from "./security/roles/SecurityRole";
 //--> com/jec/exchange/security/session

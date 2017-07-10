@@ -9,6 +9,4 @@ declare module "jec-exchange" {
 
 import { Logger, UrlPattern } from "jec-commons";
 
-/*PLACEHOLDER*/
-
-}
+/*PLACEHOLDER*/}

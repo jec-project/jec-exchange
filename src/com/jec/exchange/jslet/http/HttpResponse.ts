@@ -89,13 +89,13 @@ export interface HttpResponse {
   /**
    * Ends the response process.
    * 
-   * @param {string|Buffer} data a chunk of the response body.
+   * @param {string|any} data a chunk of the response body.
    * @param {string} encoding specifies how to encode the chunck into a byte
    *                          stream.
    * @return {HttpResponse} the reference to this <code>HttpResponse</code>
    *                        instance.
    */
-  end(data?:string|Buffer, encoding?:string):HttpResponse;
+  end(data?:string|any, encoding?:string):HttpResponse;
   
   /**
    * Performs content-negotiation on the <code>Accept</code> HTTP header on the
