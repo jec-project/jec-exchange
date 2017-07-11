@@ -41,6 +41,7 @@ export {SessionContext} from "./security/context/SessionContext";
 //--> com/jec/exchange/security/crypto
 export {UserHashModule} from "./security/crypto/UserHashModule";
 //--> com/jec/exchange/security/exceptions
+export {AuthenticationError} from "./security/exceptions/AuthenticationError";
 export {SessionError} from "./security/exceptions/SessionError";
 export {SessionErrorType} from "./security/exceptions/SessionErrorType";
 //--> com/jec/exchange/security/login
