@@ -17,6 +17,8 @@
 import {SecurityContext} from "../context/SecurityContext";
 import {Credentials} from "../Credentials";
 import {UserHashModule} from "../crypto/UserHashModule";
+import {SessionOwner} from "../session/SessionOwner";
+import {AuthenticationError} from "../exceptions/AuthenticationError";
 
 /**
  * The <code>RealmConnector</code> interface provides the API for creating data 
@@ -29,9 +31,14 @@ export interface RealmConnector {
    * 
    * @param {Credentials} credentials the credentials to authenticate.
    * @param {Function} success the callback method called in case of success.
+   *                           This method takes the reference to the
+   *                           <code>SessionOwner</code> instance as parameter.
    * @param {Function} error the callback method called in case of error.
+   *                       This method takes as <code>AuthenticationError</code>
+   *                         instance as parameter.
    */
-  authenticate(credentials:Credentials, success:Function, error:Function):void;
+  authenticate(credentials:Credentials, success:(owner:SessionOwner)=>void,
+                                    error:(err:AuthenticationError)=>void):void;
 
   /**
    * Sets the security context for this realm.
