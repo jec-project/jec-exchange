@@ -17,6 +17,7 @@
 import {RealmConnector} from "./RealmConnector";
 import {SessionOwner} from "../session/SessionOwner";
 import {Credentials} from "../Credentials";
+import {AuthenticationError} from "../exceptions/AuthenticationError"
 
 /**
  * The <code>Realm</code> interface provides the API for managing realm 
@@ -52,6 +53,7 @@ export interface Realm {
    *                         are not authenticated. The callback method must 
    *                         specify an <code>error</code> object parameter.
    */
-  authenticate(credentials:Credentials, success:(sessionOwner:SessionOwner)=>any,
-                                        error:(error:any)=>any):void;
+  authenticate(credentials:Credentials, 
+                                    success:(sessionOwner:SessionOwner)=>void,
+                                    error:(err:AuthenticationError)=>void):void;
 }

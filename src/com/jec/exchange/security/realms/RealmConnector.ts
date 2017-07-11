@@ -37,7 +37,8 @@ export interface RealmConnector {
    *                       This method takes as <code>AuthenticationError</code>
    *                         instance as parameter.
    */
-  authenticate(credentials:Credentials, success:(owner:SessionOwner)=>void,
+  authenticate(credentials:Credentials,
+                                    success:(sessionOwner:SessionOwner)=>void,
                                     error:(err:AuthenticationError)=>void):void;
 
   /**
