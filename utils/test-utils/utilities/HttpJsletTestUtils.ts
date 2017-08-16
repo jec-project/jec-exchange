@@ -15,8 +15,8 @@
 //   limitations under the License.
 
 import {HttpRequest} from "../../../src/com/jec/exchange/jslet/http/HttpRequest";
-import {HttpResponse} from "../../../src/com/jec/exchange/jslet/http/HttpResponse"
-import {HttpJslet} from "../../../src/com/jec/exchange/jslet/HttpJslet"
+import {HttpResponse} from "../../../src/com/jec/exchange/jslet/http/HttpResponse";
+import {HttpJslet} from "../../../src/com/jec/exchange/jslet/HttpJslet";
 
 /*!
  * This module constains utilities used by the HttpJsletTest test suite.
