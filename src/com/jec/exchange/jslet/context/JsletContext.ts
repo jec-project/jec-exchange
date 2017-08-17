@@ -31,8 +31,7 @@ export interface JsletContext {
   /**
    * Adds a jslet to this <code>JsletContext</code>.
    * 
-   * @param {JsletContext} jslet the jslet to add to this
-   *                             <code>JsletContext</code>.
+   * @param {Jslet} jslet the jslet to add to this code>JsletContext</code>.
    */
   addJslet(jslet:Jslet):void;
 
@@ -41,14 +40,14 @@ export interface JsletContext {
    * 
    * @param {string} url the URL for which to find a jslet.
    * @return {Jslet} the jslet that matches the specified URL, or 
-   *                 <code>undefined</code> whether the jslet does not exists.
+   *                 <code>undefined</code> whether the jslet does not exist.
    */
   getJslet(url:string):Jslet;
   
   /**
    * Returns the status information for this <code>JsletContext</code> instance.
    * 
-   * @return {Object} the status information for this <code>JsletContext</code>
+   * @return {any} the status information for this <code>JsletContext</code>
    *                  instance.
    */
   getStatusInfo():any;
