@@ -7,6 +7,6 @@
 
 declare module "jec-exchange" {
 
-import { Logger, UrlPattern } from "jec-commons";
+import { Logger, UrlPattern, ContainerContext } from "jec-commons";
 
 /*PLACEHOLDER*/}

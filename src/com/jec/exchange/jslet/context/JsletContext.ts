@@ -20,13 +20,13 @@ import {HttpRequest} from "../http/HttpRequest";
 import {HttpResponse} from "../http/HttpResponse";
 import {SessionError} from "../../security/exceptions/SessionError";
 import {SessionContext} from "../../security/context/SessionContext";
-import {Logger} from "jec-commons";
+import {ContainerContext} from "jec-commons";
 
 /**
  * The <code>JsletContext</code> interface defines a set of methods that use a 
  * jslet to communicate with a domain container.
  */
-export interface JsletContext {
+export interface JsletContext extends ContainerContext{
 
   /**
    * Adds a jslet to this <code>JsletContext</code>.
@@ -43,46 +43,22 @@ export interface JsletContext {
    *                 <code>undefined</code> whether the jslet does not exist.
    */
   getJslet(url:string):Jslet;
-  
-  /**
-   * Returns the status information for this <code>JsletContext</code> instance.
-   * 
-   * @return {any} the status information for this <code>JsletContext</code>
-   *                  instance.
-   */
-  getStatusInfo():any;
-
-  /**
-   * Returns the directory path for this <code>JsletContext</code> instance.
-   * 
-   * @return {string} the directory path for this <code>JsletContext</code>
-   *                  instance.
-   */
-  getDirectoryPath():string;
-
-  /**
-   * Returns the source path for this <code>JsletContext</code> instance.
-   * 
-   * @return {string} the source path for this <code>JsletContext</code>
-   *                  instance.
-   */
-  getSourcePath():string;
 
   /**
    * Returns the security context associated with this <code>JsletContext</code>
-   * instance.
+   * object.
    * 
    * @return {SecurityContext} the security context associated with this
-   *                            <code>JsletContext</code> instance.
+   *                            <code>JsletContext</code> object.
    */
   getSecurityContext():SecurityContext;
 
   /**
    * Returns the session context associated with this <code>JsletContext</code>
-   * instance.
+   * object.
    * 
    * @return {SessionContext} the session context associated with this
-   *                          <code>JsletContext</code> instance.
+   *                          <code>JsletContext</code> object.
    */
   getSessionContext():SessionContext;
   
@@ -115,11 +91,4 @@ export interface JsletContext {
    */
   invalidateSession(req:HttpRequest, res:HttpResponse,
                                         result:(error?:SessionError)=>any):void;
-  
-  /**
-   * Returns the logger associated with this context.
-   *
-   * @return {Logger} the logger associated with this context.
-   */
-  getLogger():Logger;
 }
