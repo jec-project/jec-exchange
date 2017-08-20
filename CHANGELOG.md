@@ -1,5 +1,16 @@
 # JEC Exchange Project: Update Release Notes
 
+<a name="jec-exchange-1.1.4"></a>
+## **1.1.4** (2017-08-20)
+
+### Bug Fixes
+
+- **postinstall**: removing the post install script
+
+### Features
+
+- **dist**: adding binaries to the `dist` folder
+
 <a name="jec-exchange-1.1.3"></a>
 ## **1.1.3** (2017-08-20)
 
@@ -52,7 +63,7 @@
 
 - This release provides many tests improvements
 - Dependencies upgrade
-- **startup:** contains the API for adding startup scripts to a JEC container
+- **startup**: contains the API for adding startup scripts to a JEC container
 
 <a name="jec-exchange-1.0.0"></a>
 ## **1.0.0** (2017-05-20)
@@ -62,5 +73,5 @@
 ### Features
 
 - Initial release of the JEC Exchange module
-- **jslet:** contains the JEC jslet API
-- **security:** contains the JEC security API
+- **jslet**: contains the JEC jslet API
+- **security**: contains the JEC security API
