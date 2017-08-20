@@ -1,5 +1,14 @@
 # JEC Exchange Project: Update Release Notes
 
+<a name="jec-exchange-1.1.3"></a>
+## **1.1.3** (2017-08-20)
+
+### Bug Fixes
+
+### Features
+
+- Fixing peer dependencies for GlassCat alpha releases integration
+
 <a name="jec-exchange-1.1.2"></a>
 ## **1.1.2** (2017-08-16)
 
