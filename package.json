@@ -1,6 +1,6 @@
 {
   "name": "jec-exchange",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "JEC Exchange - A standardized and portable way to provide JavaScript dynamic applications.",
   "main": "dist/com/jec/jec-exchange-index",
   "types": "types/jec-exchange.d.ts",
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/pechemann/jec-exchange#readme",
   "dependencies": {
-    "jec-commons": "^1.1.6"
+    "jec-commons": "^1.1.7"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.41",
