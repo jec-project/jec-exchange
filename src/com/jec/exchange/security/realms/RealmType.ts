@@ -2,7 +2,7 @@
 //
 //   Copyright 2016-2017 Pascal ECHEMANN.
 //
-//   Licensed under the Apache License, Version 2.0 (the "License");
+//   Licensed under the Apache License, Version 2.0 (the "License"),
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //
@@ -15,35 +15,35 @@
 //   limitations under the License.
 
 /**
- * Provides constant values that specify the type of realm used by a JEC
- * domain container.
+ * Provides values that specify the type of realm used by a JEC domain
+ * container.
  */
-export class RealmType {
+export enum RealmType {
 
   /**
    * Indicates that the container stores user information in a file.
    */
-  public static readonly FILE:string = "file";
+  FILE = "file",
 
   /**
    * Indicates that the container stores user information in a LDAP directory.
    */
-  public static readonly LDAP:string = "ldap";
+  LDAP = "ldap",
 
   /**
    * Indicates that the container stores user information in a database.
    */
-  public static readonly DB:string = "db";
+  DB = "db",
 
   /**
    * Indicates that the container stores user information in the administration
    * keystore file.
    */
-  public static readonly ADMIN_FILE:string = "admin-file";
+  ADMIN_FILE = "admin-file",
 
   /**
    * Indicates that the container stores user information through a custom
    * implementation of the <code>Realm</code> interface.
    */
-  public static readonly CUSTOM:string = "custom";
+  CUSTOM = "custom"
 }

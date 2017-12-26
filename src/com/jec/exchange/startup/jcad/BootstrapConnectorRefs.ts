@@ -15,15 +15,14 @@
 //   limitations under the License.
 
 /**
- * The <code>BootstrapConnectorRefs</code> class provides static constants that 
- * define the references of the Bootstrap decorator connectors.
+ * The <code>BootstrapConnectorRefs</code> Enum provides values that define the 
+ * references of the Bootstrap decorator connectors.
  */
-export class BootstrapConnectorRefs {
+export enum BootstrapConnectorRefs {
   
   /**
    * Defines the reference for connectors tha must be used to interact with the
    * <code>@Bootstrap</code> decorator.
    */
-  public static readonly BOOTSTRAP_CONNECTOR_REF:string =
-                               "com.jec.exchange.startup.annotations.Bootstrap";
+  BOOTSTRAP_CONNECTOR_REF = "com.jec.exchange.startup.annotations.Bootstrap"
 }

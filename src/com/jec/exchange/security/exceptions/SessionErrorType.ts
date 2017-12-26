@@ -2,7 +2,7 @@
 //
 //   Copyright 2016-2017 Pascal ECHEMANN.
 //
-//   Licensed under the Apache License, Version 2.0 (the "License");
+//   Licensed under the Apache License, Version 2.0 (the "License"),
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //
@@ -15,28 +15,23 @@
 //   limitations under the License.
 
 /**
- * The <code>SessionErrorType</code> class provides a collection of session
+ * The <code>SessionErrorType</code> Enum provides a collection of session
  * error types.
  */
-export class SessionErrorType {
-
-  //////////////////////////////////////////////////////////////////////////////
-  // Public properties
-  //////////////////////////////////////////////////////////////////////////////
+export enum SessionErrorType {
 
   /**
    * Indicates that the session has expired.
    */
-  public static readonly SESSION_EXPIRED:string = "errors.session.expired";
+  SESSION_EXPIRED= "errors.session.expired",
 
   /**
    * Indicates that the session ID is not valid.
    */
-  public static readonly INVALID_SESSION_ID:string = "errors.session.invalidId";
+  INVALID_SESSION_ID= "errors.session.invalidId",
   
   /**
    * Indicates that the session persistence has failed.
    */
-  public static readonly SESSION_PERSISTENCE_FAILED:string =
-                                            "errors.session.storageAccessError";
+  SESSION_PERSISTENCE_FAILED= "errors.session.storageAccessError"
 }

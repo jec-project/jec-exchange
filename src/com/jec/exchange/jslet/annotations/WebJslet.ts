@@ -26,16 +26,11 @@ const DCM:DecoratorConnectorManager = DecoratorConnectorManager.getInstance();
 const CTXM:JcadContextManager = JcadContextManager.getInstance();
 
 /**
- * The <code>@WebJslet</code> decorator defines a jslet class ne the JEC
+ * The <code>@WebJslet</code> decorator defines a jslet class in the JEC
  * specification.
  *
-```javascript
-WebJslet({
-     name: "Status",
-     urlPatterns: ["/status"],
-     template: "/views/status.ejs
- })
-```
+ * [[include:WebJslet.md]]
+ * 
  * @param {WebJsletParams} params the parameters used to initialize this jslet.
  */
 export function WebJslet(params:WebJsletParams):Function {

@@ -2,7 +2,7 @@
 //
 //   Copyright 2016-2017 Pascal ECHEMANN.
 //
-//   Licensed under the Apache License, Version 2.0 (the "License");
+//   Licensed under the Apache License, Version 2.0 (the "License"),
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //
@@ -15,23 +15,23 @@
 //   limitations under the License.
 
 /**
- * A collection of constants values that can be used to specify the
- * <code>dotfiles</code> property of a <code>SendFileOptions</code> object.
+ * An Enum of values that can be used to specify the <code>dotfiles</code>
+ * property of a <code>SendFileOptions</code> object.
  */
-export class DotFiles {
+export enum DotFiles {
 
   /**
    * Indicates that a HTTP response allows to serve dotfiles.
    */
-  public static readonly ALLOW:string = "allow";
+  ALLOW = "allow",
   
   /**
    * Indicates that a HTTP response denies to serve dotfiles.
    */
-  public static readonly DENY:string = "deny";
+  DENY = "deny",
   
   /**
    * Indicates that a HTTP response ignores serving dotfiles.
    */
-  public static readonly IGNORE:string = "ignore";
+  IGNORE = "ignore"
 }

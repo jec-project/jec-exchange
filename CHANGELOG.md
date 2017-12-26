@@ -1,7 +1,18 @@
 # JEC Exchange Project: Update Release Notes
 
+<a name="jec-exchange-1.1.6"></a>
+## **1.1.6** (2017-12-26)
+
+### Bug Fixes
+
+### Features
+
+- Dependencies upgrade
+- Documentation improvements
+- Classes that define static constants have been replaced by string based Enums
+
 <a name="jec-exchange-1.1.5"></a>
-## **1.1.58** (2017-09-06)
+## **1.1.5** (2017-09-06)
 
 ### Bug Fixes
 

@@ -2,7 +2,7 @@
 //
 //   Copyright 2016-2017 Pascal ECHEMANN.
 //
-//   Licensed under the Apache License, Version 2.0 (the "License");
+//   Licensed under the Apache License, Version 2.0 (the "License"),
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //
@@ -18,35 +18,35 @@
  * Contains the values of methods used to manage authentication in a JEC
  * application.
  */
-export class AuthMethod {
+export enum AuthMethod {
 
   /**
    * Indicates that the application does not use any standard validation process
    * for authenticating users.
    */
-  public static readonly NONE:string = "none";
+  NONE= "none",
 
   /**
    * Indicates that the application use a standard form validation for
    * authenticating users.
    */
-  public static readonly FORM:string = "form";
+  FORM= "form",
 
   /**
    * Indicates that the application use a standard EJP form validation for
    * authenticating users.
    */
-  public static readonly EJP_FORM:string = "ejp-form";
+  EJP_FORM= "ejp-form",
   
   /**
    * Indicates that the application use a "basic" validation for authenticating
    * users.
    */
-  public static readonly BASIC:string = "basic";
+  BASIC= "basic",
 
   /**
    * Indicates that the application use a "digest" validation for authenticating
    * users.
    */
-  public static readonly DIGEST:string = "digest";
+  DIGEST= "digest"
 }

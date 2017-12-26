@@ -104,14 +104,7 @@ export interface HttpResponse {
    * header. The following sample code shows how to create different response
    * treatments depending on the MIME type of the current HTTP request:
    * 
-   * ```javascript
-let formatMap:any = {
-  "text/plain": ()=> { res.send("Hello World!"); },
-  "text/html": ()=> { res.send("<p>Hello World!</p>"); },
-  "application/json": ()=> { res.send({ message: "Hello World!" }); }
-};
-exit(req, res.format(formatMap));
-```
+   * [[include:HttpResponse-format.md]]
    * 
    * @param {any} obj an object that represents the different cases used to send
    *                  information through the current HTTP transaction.
@@ -136,13 +129,8 @@ exit(req, res.format(formatMap));
    * populate the <code>Link</code> HTTP header field of the response.
    * Links are provided as list of a key/value properties, as shown below:
    * 
-```javascript
-let links:any = {
-  next: "http://foo.bar.com/link/next",
-  last: "http://foo.bar.com/link/last"
-};
-exit(req, res.links(links));
-```
+   * [[include:HttpResponse-links.md]]
+   * 
    * @return {HttpResponse} the reference to this <code>HttpResponse</code>
    *                        instance.
    */

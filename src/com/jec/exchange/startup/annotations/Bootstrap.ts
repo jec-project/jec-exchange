@@ -29,15 +29,8 @@ const CTXM:JcadContextManager = JcadContextManager.getInstance();
  * The <code>@Bootstrap</code> decorator defines a bootstrap class in the JEC
  * specification.
  *
-```javascript
-Bootstrap()
-export class InitApp() implements BootstrapScript {
-
-  public run(container:JecContainer):void {
-    //Rest of the code hrer...
-  }
-}
-```
+ * [[include:Bootstrap.md]]
+ * 
  * @param {BootstrapParams} params the parameters used to initialize this jslet.
  */
 export function Bootstrap(params?:BootstrapParams):Function {

@@ -15,15 +15,14 @@
 //   limitations under the License.
 
 /**
- * The <code>JsletConnectorRefs</code> class provides static constants that 
- * define the references of the Jslet decorator connectors.
+ * The <code>JsletConnectorRefs</code> Enum provides values that define the
+ * references of the Jslet decorator connectors.
  */
-export class JsletConnectorRefs {
+export enum JsletConnectorRefs {
   
   /**
    * Defines the reference for connectors tha must be used to interact with the
    * <code>@WebJslet</code> decorator.
    */
-  public static readonly WEB_JSLET_CONNECTOR_REF:string =
-                                  "com.jec.exchange.jslet.annotations.WebJslet";
+  WEB_JSLET_CONNECTOR_REF = "com.jec.exchange.jslet.annotations.WebJslet"
 }

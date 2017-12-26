@@ -2,7 +2,7 @@
 //
 //   Copyright 2016-2017 Pascal ECHEMANN.
 //
-//   Licensed under the Apache License, Version 2.0 (the "License");
+//   Licensed under the Apache License, Version 2.0 (the "License"),
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //
@@ -15,11 +15,11 @@
 //   limitations under the License.
 
 /**
- * The <code>SessionStorageType</code> class contains constants the specify the
- * type of <code>SessionStorage</code> implementation to use with a
+ * The <code>SessionStorageType</code> Enum contains values the specify the type
+ * of <code>SessionStorage</code> implementation to use with a
  * <code>SessionContext</code> object.
  */
-export class SessionStorageType {
+export enum SessionStorageType {
 
   //////////////////////////////////////////////////////////////////////////////
   // Public properties
@@ -29,17 +29,17 @@ export class SessionStorageType {
    * Indicates that the <code>SessionStorage</code> implementation must store
    * session in a local in-memory data grid.
    */
-  public static readonly LOCAL:string = "local";
+  LOCAL = "local",
   
   /**
    * Indicates that the <code>SessionStorage</code> implementation must store
    * session in a distant in-memory data grid.
    */
-  public static readonly DISTANT:string = "distant";
+  DISTANT = "distant",
   
   /**
    * Indicates that the <code>SessionStorage</code> implementation is a custom
    * connector.
    */
-  public static readonly CUSTOM:string = "custom";
+  CUSTOM = "custom"
 }
