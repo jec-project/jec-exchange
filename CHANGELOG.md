@@ -10,6 +10,7 @@
 - Dependencies upgrade
 - Documentation improvements
 - Classes that define static constants have been replaced by string based Enums
+- Fixing `jec-commons` module break changes
 
 <a name="jec-exchange-1.1.5"></a>
 ## **1.1.5** (2017-09-06)

@@ -15,8 +15,8 @@
 //   limitations under the License.
 
 import {Decorator, AbstractDecoratorConnector, ClassLoader, JcadContext,
-        JcadContextFactory, DecoratorConnectorManager, JcadContextManager
-      } from "jec-commons";
+        JcadContextFactory, DecoratorConnectorManager, JcadContextManager,
+        DefaultClassLoader} from "jec-commons";
 import {BootstrapConnectorRefs} from "../../../src/com/jec/exchange/startup/jcad/BootstrapConnectorRefs";
 import {BootstrapParams} from "../../../src/com/jec/exchange/startup/annotations/core/BootstrapParams";
 
@@ -25,7 +25,7 @@ import {BootstrapParams} from "../../../src/com/jec/exchange/startup/annotations
  */
 
 // Utilities:
-const LOADER:ClassLoader = new ClassLoader();
+const LOADER:ClassLoader = new DefaultClassLoader();
 const VALID_CLASS:string = process.cwd() + "/utils/test-utils/classes/TestBootstrapClass";
 class TestConnector extends AbstractDecoratorConnector {}
 class TestDecorator implements Decorator {

@@ -15,8 +15,8 @@
 //   limitations under the License.
 
 import {Decorator, AbstractDecoratorConnector, ClassLoader, JcadContext,
-        JcadContextFactory, DecoratorConnectorManager, JcadContextManager
-      } from "jec-commons";
+        JcadContextFactory, DecoratorConnectorManager, JcadContextManager,
+        DefaultClassLoader } from "jec-commons";
 import {JsletConnectorRefs} from "../../../src/com/jec/exchange/jslet/jcad/JsletConnectorRefs";
 
 /*!
@@ -24,7 +24,7 @@ import {JsletConnectorRefs} from "../../../src/com/jec/exchange/jslet/jcad/Jslet
  */
 
 // Utilities:
-const LOADER:ClassLoader = new ClassLoader();
+const LOADER:ClassLoader = new DefaultClassLoader();
 const VALID_CLASS:string = process.cwd() + "/utils/test-utils/classes/TestJsletClass";
 class TestConnector extends AbstractDecoratorConnector {}
 class TestDecorator implements Decorator {
