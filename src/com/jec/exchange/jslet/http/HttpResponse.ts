@@ -16,6 +16,7 @@
 
 import {CookieOptions} from "./CookieOptions";
 import {SendFileOptions} from "./SendFileOptions";
+import {HttpStatusCode} from "jec-commons";
 
 /**
  * Represents a response to a HTTP request.
@@ -189,13 +190,11 @@ export interface HttpResponse {
    * method `res.sendStatus(XXX)` is similar to `res.status(XXX).send()`, where
    * `XXX` represents a valid status code.
    * 
-   * @param {number} statusCode the status code to send. Valid values are the
-   *                            constants of the <code>HttpStatusCode</code>
-   *                            class.
+   * @param {HttpStatusCode} statusCode the status code to send.
    * @return {HttpResponse} the reference to this <code>HttpResponse</code>
    *                        instance.
    */
-  sendStatus(statusCode:number):HttpResponse;
+  sendStatus(statusCode:HttpStatusCode):HttpResponse;
 
    /**
    * Sets the response HTTP header field to the specified <code>value</code>
@@ -212,13 +211,11 @@ export interface HttpResponse {
    * Sets the response HTTP status code to the specified <code>statusCode</code>
    * parameter.
    * 
-   * @param {number} statusCode the status code to of the HTTP response. Valid 
-   *                            values are the constants of the 
-   *                            <code>HttpStatusCode</code> class.
+   * @param {HttpStatusCode} statusCode the status code to of the HTTP response.
    * @return {HttpResponse} the reference to this <code>HttpResponse</code>
    *                        instance.
    */
-  status(statusCode:number):HttpResponse;
+  status(statusCode:HttpStatusCode):HttpResponse;
   
   /**
    * Sets the <code>Content-Type</code> HTTP header value to the specified MIME

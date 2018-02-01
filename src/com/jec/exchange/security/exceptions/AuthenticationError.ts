@@ -14,6 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {HttpStatusCode} from "jec-commons";
+
 /**
  * The interface that you must implement for creating data transfert objects
  * used to manage authentication errors.
@@ -21,10 +23,9 @@
 export interface AuthenticationError {
 
   /**
-   * Returns the HTTP status code for this error. Valid values are constants of 
-   * the <code>HttpStatusCode</code> ennum.
+   * Returns the HTTP status code for this error.
    * 
-   * @return {number} a constant of the <code>HttpStatusCode</code> ennum.
+   * @return {HttpStatusCode} a member of the <code>HttpStatusCode</code> enum.
    */
-  getStatusCode():number;
+  getStatusCode():HttpStatusCode;
 }
