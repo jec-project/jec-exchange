@@ -15,6 +15,7 @@
 //   limitations under the License.
 
 import {SessionId} from "../session/SessionId";
+import {SessionErrorType} from "./SessionErrorType";
 
 /**
  * The interface that you must implement for creating data transfert objects
@@ -30,12 +31,11 @@ export interface SessionError {
   getSessionId():SessionId;
 
   /**
-   * Returns the type of the session error. Valid values are constants of the
-   * <code>SessionErrorType</code> class.
+   * Returns the type of the session error.
    * 
-   * @return {string} the type of the session error.
+   * @return {SessionErrorType} the type of the session error.
    */
-  getErrorType():string;
+  getErrorType():SessionErrorType;
   
   /**
    * Returns a string that contains the details of the session error.

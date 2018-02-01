@@ -14,6 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {DotFiles} from "./DotFiles";
+
 /**
  * This interface defines the options for the <code>sendFile()</code> method of
  * the <code>HttpResponse</code> class.
@@ -43,10 +45,9 @@ export interface SendFileOptions {
   headers?:any;
   
   /**
-   * An option for serving dotfiles. Valid values are constants of the
-   * <code>DotFiles</code> class.
+   * An option for serving dotfiles.
    */
-  dotfiles?:string;
+  dotfiles?:DotFiles;
   
   /**
    * Indicates whether to accept ranged requests (<code>true</code>), or not
