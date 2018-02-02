@@ -18,6 +18,7 @@ import {RealmConnector} from "./RealmConnector";
 import {SessionOwner} from "../session/SessionOwner";
 import {Credentials} from "../Credentials";
 import {AuthenticationError} from "../exceptions/AuthenticationError"
+import {RealmType} from "./RealmType";
 
 /**
  * The <code>Realm</code> interface provides the API for managing realm 
@@ -26,12 +27,11 @@ import {AuthenticationError} from "../exceptions/AuthenticationError"
 export interface Realm {
   
   /**
-   * Returns the type of realm for this realm. Valid values are constants of the
-   * <code>RealmType</code> class.
+   * Returns the type of realm for this realm.
    * 
-   * @return {string} a constant of the <code>RealmType</code> class.
+   * @return {RealmType} a member of the <code>RealmType</code> enum.
    */
-  getRealmType():string;
+  getRealmType():RealmType;
 
   /**
    * Returns the reference to the <code>RealmConnector</code> instance for this 

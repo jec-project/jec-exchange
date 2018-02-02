@@ -24,19 +24,19 @@ export enum AuthMethod {
    * Indicates that the application does not use any standard validation process
    * for authenticating users.
    */
-  NONE= "none",
+  NONE = "none",
 
   /**
    * Indicates that the application use a standard form validation for
    * authenticating users.
    */
-  FORM= "form",
+  FORM = "form",
 
   /**
    * Indicates that the application use a standard EJP form validation for
    * authenticating users.
    */
-  EJP_FORM= "ejp-form",
+  EJP_FORM = "ejp-form",
   
   /**
    * Indicates that the application use a "basic" validation for authenticating
@@ -48,5 +48,5 @@ export enum AuthMethod {
    * Indicates that the application use a "digest" validation for authenticating
    * users.
    */
-  DIGEST= "digest"
+  DIGEST = "digest"
 }
