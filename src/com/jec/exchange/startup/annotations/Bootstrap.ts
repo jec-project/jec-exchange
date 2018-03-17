@@ -19,7 +19,7 @@ import {BootstrapConnectorRefs} from "../jcad/BootstrapConnectorRefs";
 import {JcadContext, JcadContextManager, DecoratorConnectorManager} from "jec-commons";
 
 ////////////////////////////////////////////////////////////////////////////////
-// CAD API
+// JCAD API
 ////////////////////////////////////////////////////////////////////////////////
 
 const DCM:DecoratorConnectorManager = DecoratorConnectorManager.getInstance();
@@ -42,10 +42,10 @@ export function Bootstrap(params?:BootstrapParams):Function {
   return function(target:any):Function {
     
     ////////////////////////////////////////////////////////////////////////////
-    // CAD API
+    // JCAD API
     ////////////////////////////////////////////////////////////////////////////
 
-    var ctx:JcadContext =
+    const ctx:JcadContext =
                 CTXM.getContext(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF);
     return DCM.getDecorator(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF, ctx)
               .decorate(target, params);

@@ -2,6 +2,6 @@
 @WebJslet({
      name: "Status",
      urlPatterns: ["/status"],
-     template: "/views/status.ejs
+     template: "/views/status.ejs"
  })
 ```

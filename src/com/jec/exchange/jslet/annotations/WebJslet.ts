@@ -19,7 +19,7 @@ import {JsletConnectorRefs} from "../jcad/JsletConnectorRefs";
 import {JcadContext, JcadContextManager, DecoratorConnectorManager} from "jec-commons";
 
 ////////////////////////////////////////////////////////////////////////////////
-// CAD API
+// JCAD API
 ////////////////////////////////////////////////////////////////////////////////
 
 const DCM:DecoratorConnectorManager = DecoratorConnectorManager.getInstance();
@@ -42,10 +42,10 @@ export function WebJslet(params:WebJsletParams):Function {
   return function(target:any):Function {
     
     ////////////////////////////////////////////////////////////////////////////
-    // CAD API
+    // JCAD API
     ////////////////////////////////////////////////////////////////////////////
 
-    var ctx:JcadContext =
+    const ctx:JcadContext =
                     CTXM.getContext(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF);
     return DCM.getDecorator(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF, ctx)
               .decorate(target, params);
