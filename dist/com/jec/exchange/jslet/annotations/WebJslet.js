@@ -6,7 +6,7 @@ const DCM = jec_commons_1.DecoratorConnectorManager.getInstance();
 const CTXM = jec_commons_1.JcadContextManager.getInstance();
 function WebJslet(params) {
     return function (target) {
-        var ctx = CTXM.getContext(JsletConnectorRefs_1.JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF);
+        const ctx = CTXM.getContext(JsletConnectorRefs_1.JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF);
         return DCM.getDecorator(JsletConnectorRefs_1.JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF, ctx)
             .decorate(target, params);
     };
