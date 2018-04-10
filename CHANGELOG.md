@@ -1,5 +1,14 @@
 # JEC Exchange Project: Update Release Notes
 
+<a name="jec-exchange-1.1.7"></a>
+## **1.1.7** (2018-04-07)
+
+### Bug Fixes
+
+### Features
+
+- **HttpRequest:** changing the "accept" API to provide more logical behavior
+
 <a name="jec-exchange-1.1.6"></a>
 ## **1.1.6** (2017-12-26)
 

@@ -112,54 +112,48 @@ export interface HttpRequest {
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Checks if the specified content types are acceptable, based on the request
-   * <code>Accept</code> HTTP header field. The method returns the best match,
-   * or <code>false</code> whether none of the specified content types is
-   * acceptable.
+   * Checks if the specified content types is acceptable, based on the request
+   * <code>Accept</code> HTTP header field.
    * 
    * The type value may be a single MIME type string (such as 
-   * </code>application/json</code>), an extension name (such as 
-   * <code>json</code>), a comma-delimited list, or an array.
+   * </code>application/json</code>), or an extension name (such as 
+   * <code>json</code>).
    * 
-   * @param {string|string[]} types the type value(s) to check.
-   * @return {string|void} a string that represents the best match, or 
-   *                  <code>false</code> whether none of the specified content
-   *                  types is acceptable.
+   * @param {string} type the type value to check.
+   * @return {boolean} <code>true</code> whether the specified content types is
+   *                   acceptable; <code>false</code> otherwhise.
    */
-  accepts(types:string | string[]):string | void;
+  accepts(type:string):boolean;
   
   /**
-   * Returns the first accepted charset of the specified character sets,
-   * or <code>false</code> whether none of the specified charsets is acceptable.
+   * Returns <code>true</code> whether the specified character set is accepted;
+   * <code>false</code> otherwhise.
    * 
-   * @param {string|string[]} types the charset value(s) to check.
-   * @return {string|boolean} a string that represents the best match, or 
-   *                  <code>false</code> whether none of the specified charsets
-   *                  is acceptable.
+   * @param {string} charset the charset value to check.
+   * @return {boolean} <code>true</code> whether the specified character set is
+   *                   accepted; <code>false</code> otherwhise.
    */
-  acceptsCharsets(charset:string | string[]):string | boolean;
+  acceptsCharset(charset:string):boolean;
   
   /**
-   * Returns the first accepted encoding of the specified encodings, or 
-   * <code>false</code> whether none of the specified encodings is acceptable.
+   * Returns <code>true</code> whether the specified encoding is accepted;
+   * <code>false</code> otherwhise.
    * 
-   * @param {string|string[]} encoding the encoding value(s) to check.
-   * @return {string|boolean} a string that represents the best match, or
-   *                  <code>false</code> whether none of the specified encodings
-   *                  is acceptable.
+   * @param {string} encoding the encoding value to check.
+   * @return {boolean} <code>true</code> whether the specified encoding is
+   *                  accepted; <code>false</code> otherwhise.
    */
-  acceptsEncodings(encoding:string | string[]):string | boolean;
+  acceptsEncoding(encoding:string):boolean;
   
   /**
-   * Returns the first accepted language of the specified languages, or 
-   * <code>false</code> whether none of the specified languages is acceptable.
+   * Returns <code>true</code> whether the specified language is accepted;
+   * <code>false</code> otherwhise.
    * 
-   * @param {string|string[]} lang the language value(s) to check.
-   * @return {string|boolean} a string that represents the best match, or
-   *                  <code>false</code> whether none of the specified languages
-   *                  is acceptable.
+   * @param {string} lang the language value to check.
+   * @return {boolean} <code>true</code> whether the specified language is
+   *                   accepted; <code>false</code> otherwhise.
    */
-  acceptsLanguages(lang:string | string[]):string | boolean;
+  acceptsLanguage(lang:string):boolean;
   
   /**
    * Returns the specified HTTP request header field (case-insensitive match).

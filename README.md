@@ -70,7 +70,7 @@ The documentation generator is [TypeDoc](http://typedoc.org/)
 
 ## Update Release Notes
 
-**Current stable release:** [1.1.6](CHANGELOG.md#jec-exchange-1.1.6)
+**Current stable release:** [1.1.7](CHANGELOG.md#jec-exchange-1.1.7)
  
 For a complete listing of release notes for all JEC Exchange update releases, see the [CHANGELOG](CHANGELOG.md) file. 
 
