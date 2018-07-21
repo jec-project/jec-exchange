@@ -1,5 +1,14 @@
 # JEC Exchange Project: Update Release Notes
 
+<a name="jec-exchange-1.1.8"></a>
+## **1.1.8** (2018-07-21)
+
+### Bug Fixes
+
+### Features
+
+- Dependencies upgrade
+
 <a name="jec-exchange-1.1.7"></a>
 ## **1.1.7** (2018-04-07)
 
