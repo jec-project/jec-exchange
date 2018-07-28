@@ -15,8 +15,7 @@
 //   limitations under the License.
 
 import "mocha";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import * as sinon from "sinon";
 import {DecoratorConnectorManager, JcadContextManager, JcadContext} from "jec-commons";
 import {BootstrapConnectorRefs} from "../../../../../../src/com/jec/exchange/startup/jcad/BootstrapConnectorRefs";
 
@@ -27,21 +26,28 @@ import * as BootstrapAnnotation from "../../../../../../src/com/jec/exchange/sta
 import * as utils from "../../../../../../utils/test-utils/utilities/BootstrapTestUtils";
 import * as bootstrapParams from "../../../../../../utils/test-utils/classes/TestBootstrapParams";
 
-// Chai declarations:
-const expect:any = chai.expect;
-chai.use(spies);
-
 // Test:
 describe("Bootstrap", ()=> {
 
   let context:JcadContext = null;
+  let getContextSpy:any = null;
+  let getDecoratorSpy:any = null;
+  let annotationSpy:any = null;
+  let decorateSpy:any = null;
 
   before(()=> {
+    getContextSpy = sinon.spy(JcadContextManager.getInstance(), "getContext");
+    getDecoratorSpy =
+             sinon.spy(DecoratorConnectorManager.getInstance(), "getDecorator");
+    annotationSpy = sinon.spy(BootstrapAnnotation, "Bootstrap");
+    decorateSpy = sinon.spy(utils.TEST_DECORATOR, "decorate");
     context = utils.initContext();
+    utils.buildClassRef();
   });
 
   after(()=> {
     utils.resetContext(context);
+    sinon.restore();
   });
 
   beforeEach(()=> {
@@ -49,26 +55,29 @@ describe("Bootstrap", ()=> {
   });
 
   describe("@Bootstrap", ()=> {
-
-    let ctxmSpy:any = chai.spy.on(JcadContextManager.getInstance(), "getContext");
-    let dcmSpy:any = chai.spy.on(DecoratorConnectorManager.getInstance(), "getDecorator");
-    let decoratorSpy:any = chai.spy.on(utils.TEST_DECORATOR, "decorate");
-    let BootstrapSpy:any = chai.spy.on(BootstrapAnnotation, "Bootstrap");
     
     it("should invoke the BootstrapConnectorRefs with the BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF reference", function() {
-      expect(ctxmSpy).to.have.been.called.with(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF);
+      sinon.assert.calledOnce(getContextSpy);
+      sinon.assert.calledWith(
+        getContextSpy, BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF
+      );
     });
 
     it("should invoke the DecoratorConnectorManager with the BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF reference and the correct JCAD context", function() {
-      expect(dcmSpy).to.have.been.called.with(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF, context);
+      sinon.assert.calledOnce(getDecoratorSpy);
+      sinon.assert.calledWith(
+        getDecoratorSpy, BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF, context
+      );
     });
     
     it("should invoke the annotation decorator with the specified parameters", function() {
-      expect(BootstrapSpy).to.have.been.called.with(bootstrapParams.PARAMS);
+      sinon.assert.calledOnce(annotationSpy);
+      //sinon.assert.calledWith(getDecoratorSpy, bootstrapParams.PARAMS);
     });
     
     it("should invoke the registered decorator with the specified parameters", function() {
-      expect(decoratorSpy).to.have.been.called.with(bootstrapParams.PARAMS);
+      sinon.assert.calledOnce(decorateSpy);
+      //sinon.assert.calledWith(getDecoratorSpy, bootstrapParams.PARAMS);
     });
   });
 });

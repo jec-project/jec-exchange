@@ -28,14 +28,14 @@ describe("JsletError", ()=> {
 
   describe("instanceOf(Error)", ()=> {
     it("JsletError should extend Error", function() {
-      let error:JsletError = new JsletError(null);
+      const error:JsletError = new JsletError(null);
       expect(error).to.be.instanceOf(Error);
     });
   });
 
   describe("#message", ()=> {
     it("should return the same string as passed in the class constructor", function() {
-      let error:JsletError = new JsletError(utils.ERROR_MSG);
+      const error:JsletError = new JsletError(utils.ERROR_MSG);
       expect(error.message).to.equal(utils.ERROR_MSG);
     });
   });

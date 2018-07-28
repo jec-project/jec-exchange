@@ -28,7 +28,9 @@ describe("BootstrapConnectorRefs", ()=> {
 
   describe("#WEB_JSLET_CONNECTOR_REF", ()=> {
     it("WEB_JSLET_CONNECTOR_REF should return 'com.jec.exchange.startup.annotations.Bootstrap'", function() {
-      expect(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF).to.equal(utils.BOOTSTRAP_CONNECTOR_REF);
+      expect(
+        BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF
+      ).to.equal(utils.BOOTSTRAP_CONNECTOR_REF);
     });
   });
 });

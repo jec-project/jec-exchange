@@ -28,7 +28,9 @@ describe("JsletConnectorRefs", ()=> {
 
   describe("#WEB_JSLET_CONNECTOR_REF", ()=> {
     it("WEB_JSLET_CONNECTOR_REF should return 'com.jec.exchange.jslet.annotations.WebJslet'", function() {
-      expect(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF).to.equal(utils.WEB_JSLET_CONNECTOR_REF);
+      expect(
+        JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF
+      ).to.equal(utils.WEB_JSLET_CONNECTOR_REF);
     });
   });
 });

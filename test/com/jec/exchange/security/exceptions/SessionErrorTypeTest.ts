@@ -34,13 +34,17 @@ describe("SessionErrorType", ()=> {
   
   describe("#INVALID_SESSION_ID", ()=> {
     it("INVALID_SESSION_ID should return 'errors.session.invalidId'", function() {
-      expect(SessionErrorType.INVALID_SESSION_ID).to.equal(utils.INVALID_SESSION_ID);
+      expect(
+        SessionErrorType.INVALID_SESSION_ID
+      ).to.equal(utils.INVALID_SESSION_ID);
     });
   });
   
   describe("#SESSION_PERSISTENCE_FAILED", ()=> {
     it("SESSION_PERSISTENCE_FAILED should return 'errors.session.storageAccessError'", function() {
-      expect(SessionErrorType.SESSION_PERSISTENCE_FAILED).to.equal(utils.SESSION_PERSISTENCE_FAILED);
+      expect(
+        SessionErrorType.SESSION_PERSISTENCE_FAILED
+      ).to.equal(utils.SESSION_PERSISTENCE_FAILED);
     });
   });
 });

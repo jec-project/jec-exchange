@@ -1,5 +1,9 @@
 # JEC Exchange Project
 
+[![JEC version](https://img.shields.io/badge/JEC-1.0-%23ba00ff.svg)](http://jecproject.org)
+[![npm version](https://badge.fury.io/js/jec-exchange.svg)](https://www.npmjs.com/package/jec-exchange)
+[![Apache 2.0](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
 JEC Exchange is a [JavaScript Enterprise Container][jec-url] project focused on the portability of JEC applications.
 
 [![][jec-logo]][jec-url]
@@ -70,7 +74,7 @@ The documentation generator is [TypeDoc](http://typedoc.org/)
 
 ## Update Release Notes
 
-**Current stable release:** [1.1.8](CHANGELOG.md#jec-exchange-1.1.8)
+**Current stable release:** [1.1.9](CHANGELOG.md#jec-exchange-1.1.9)
  
 For a complete listing of release notes for all JEC Exchange update releases, see the [CHANGELOG](CHANGELOG.md) file. 
 

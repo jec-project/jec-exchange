@@ -15,8 +15,8 @@
 //   limitations under the License.
 
 import "mocha";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import {expect} from "chai";
+import * as sinon from "sinon";
 import {JsletContext} from "../../../../../src/com/jec/exchange/jslet/context/JsletContext";
 import {HttpRequest} from "../../../../../src/com/jec/exchange/jslet/http/HttpRequest";
 import {HttpResponse} from "../../../../../src/com/jec/exchange/jslet/http/HttpResponse";
@@ -27,10 +27,6 @@ import {HttpJslet} from "../../../../../src/com/jec/exchange/jslet/HttpJslet";
 
 // Utilities:
 import * as utils from "../../../../../utils/test-utils/utilities/HttpJsletTestUtils";
-
-// Chai declarations:
-const expect = chai.expect;
-chai.use(spies);
 
 // Test:
 describe("HttpJslet", ()=> {
@@ -47,7 +43,7 @@ describe("HttpJslet", ()=> {
 
   describe("#getContext()", ()=> {
     it("should return en empty object", function() {
-      let context:any = httpJslet.getContext();
+      const context:any = httpJslet.getContext();
       expect(context).to.not.be.null;
       expect(context).to.be.sealed;
       expect(context).to.be.frozen;
@@ -56,7 +52,7 @@ describe("HttpJslet", ()=> {
   
   describe("#getContext()", ()=> {
     it("should return the same value the passed to the setContext() method", function() {
-      let context:JsletContext = ({} as JsletContext);
+      const context:JsletContext = ({} as JsletContext);
       httpJslet.setContext(context)
       expect(httpJslet.getContext()).to.equal(context);
     });
@@ -71,13 +67,15 @@ describe("HttpJslet", ()=> {
   describe("#get()", ()=> {
     it("should return the right value when 'key' is defined", function() {
       httpJslet[utils.DEFINED_KEY] = utils.DEFINED_KEY_VALUE;
-      expect(httpJslet.get(utils.DEFINED_KEY)).to.equal(utils.DEFINED_KEY_VALUE);
+      expect(
+        httpJslet.get(utils.DEFINED_KEY)
+      ).to.equal(utils.DEFINED_KEY_VALUE);
     });
   });
   
   describe("#getName()", ()=> {
     it("should return en empty object by default", function() {
-      let name:any = httpJslet.getName();
+      const name:any = httpJslet.getName();
       expect(name).to.not.be.null;
       expect(name).to.be.sealed;
       expect(name).to.be.frozen;
@@ -99,7 +97,7 @@ describe("HttpJslet", ()=> {
 
   describe("#getUrlPatterns()", ()=> {
     it("should return en empty object by default", function() {
-      let patterns:any = httpJslet.getUrlPatterns();
+      const patterns:any = httpJslet.getUrlPatterns();
       expect(patterns).to.not.be.null;
       expect(patterns).to.be.sealed;
       expect(patterns).to.be.frozen;
@@ -108,93 +106,121 @@ describe("HttpJslet", ()=> {
 
   describe("#service()", ()=> {
     it("should invoke the callback function with the same parameters as passed to the service() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.GET);
-      let response:HttpResponse = utils.buildResponse();
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{
-        expect(req).to.equal(request);
-        expect(res).to.equal(response);
-        expect(data).to.not.be.null;
-      });
+      const request:HttpRequest = utils.buildRequest(HttpMethod.GET);
+      const response:HttpResponse = utils.buildResponse();
+      httpJslet.service(
+        request,
+        response,
+          (req:HttpRequest, res:HttpResponse, data:any)=>{
+          expect(req).to.equal(request);
+          expect(res).to.equal(response);
+          expect(data).to.not.be.null;
+        }
+      );
     });
   });
 
   describe("#service()", ()=> {
     it("should invoke the doDelete() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.DELETE);
-      let response:HttpResponse = utils.buildResponse();
-      let spy:any = chai.spy.on(httpJslet, "doDelete");
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
-      expect(spy).to.have.been.called;
+      const request:HttpRequest = utils.buildRequest(HttpMethod.DELETE);
+      const response:HttpResponse = utils.buildResponse();
+      const spy:any = sinon.spy(httpJslet, "doDelete");
+      httpJslet.service(
+        request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{}
+      );
+      sinon.assert.calledOnce(spy);
+      sinon.restore();
     });
   });
   
   describe("#service()", ()=> {
     it("should invoke the doGet() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.GET);
-      let response:HttpResponse = utils.buildResponse();
-      let spy:any = chai.spy.on(httpJslet, "doGet");
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
-      expect(spy).to.have.been.called;
+      const request:HttpRequest = utils.buildRequest(HttpMethod.GET);
+      const response:HttpResponse = utils.buildResponse();
+      const spy:any = sinon.spy(httpJslet, "doGet");
+      httpJslet.service(
+        request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{}
+      );
+      sinon.assert.calledOnce(spy);
+      sinon.restore();
     });
   });
   
   describe("#service()", ()=> {
     it("should invoke the doOptions() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.OPTIONS);
-      let response:HttpResponse = utils.buildResponse();
-      let spy:any = chai.spy.on(httpJslet, "doOptions");
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
-      expect(spy).to.have.been.called;
+      const request:HttpRequest = utils.buildRequest(HttpMethod.OPTIONS);
+      const response:HttpResponse = utils.buildResponse();
+      const spy:any = sinon.spy(httpJslet, "doOptions");
+      httpJslet.service(
+        request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{}
+      );
+      sinon.assert.calledOnce(spy);
+      sinon.restore();
     });
   });
   
   describe("#service()", ()=> {
     it("should invoke the doTrace() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.TRACE);
-      let response:HttpResponse = utils.buildResponse();
-      let spy:any = chai.spy.on(httpJslet, "doTrace");
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
-      expect(spy).to.have.been.called;
+      const request:HttpRequest = utils.buildRequest(HttpMethod.TRACE);
+      const response:HttpResponse = utils.buildResponse();
+      const spy:any = sinon.spy(httpJslet, "doTrace");
+      httpJslet.service(
+        request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{}
+      );
+      sinon.assert.calledOnce(spy);
+      sinon.restore();
     });
   });
   
   describe("#service()", ()=> {
     it("should invoke the doHead() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.HEAD);
-      let response:HttpResponse = utils.buildResponse();
-      let spy:any = chai.spy.on(httpJslet, "doHead");
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
-      expect(spy).to.have.been.called;
+      const request:HttpRequest = utils.buildRequest(HttpMethod.HEAD);
+      const response:HttpResponse = utils.buildResponse();
+      const spy:any = sinon.spy(httpJslet, "doHead");
+      httpJslet.service(
+        request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{}
+      );
+      sinon.assert.calledOnce(spy);
+      sinon.restore();
     });
   });
   
   describe("#service()", ()=> {
     it("should invoke the doConnect() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.CONNECT);
-      let response:HttpResponse = utils.buildResponse();
-      let spy:any = chai.spy.on(httpJslet, "doConnect");
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
-      expect(spy).to.have.been.called;
+      const request:HttpRequest = utils.buildRequest(HttpMethod.CONNECT);
+      const response:HttpResponse = utils.buildResponse();
+      const spy:any = sinon.spy(httpJslet, "doConnect");
+      httpJslet.service(
+        request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{}
+      );
+      sinon.assert.calledOnce(spy);
+      sinon.restore();
     });
   });
   
   describe("#service()", ()=> {
     it("should invoke the doPut() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.PUT);
-      let response:HttpResponse = utils.buildResponse();
-      let spy:any = chai.spy.on(httpJslet, "doPut");
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
-      expect(spy).to.have.been.called;
+      const request:HttpRequest = utils.buildRequest(HttpMethod.PUT);
+      const response:HttpResponse = utils.buildResponse();
+      const spy:any = sinon.spy(httpJslet, "doPut");
+      httpJslet.service(
+        request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{}
+      );
+      sinon.assert.calledOnce(spy);
+      sinon.restore();
     });
   });
   
   describe("#service()", ()=> {
     it("should invoke the doPost() method", function() {
-      let request:HttpRequest = utils.buildRequest(HttpMethod.POST);
-      let response:HttpResponse = utils.buildResponse();
-      let spy:any = chai.spy.on(httpJslet, "doPost");
-      httpJslet.service(request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{});
-      expect(spy).to.have.been.called;
+      const request:HttpRequest = utils.buildRequest(HttpMethod.POST);
+      const response:HttpResponse = utils.buildResponse();
+      const spy:any = sinon.spy(httpJslet, "doPost");
+      httpJslet.service(
+        request, response, (req:HttpRequest, res:HttpResponse, data:any)=>{}
+      );
+      sinon.assert.calledOnce(spy);
+      sinon.restore();
     });
   });
 });

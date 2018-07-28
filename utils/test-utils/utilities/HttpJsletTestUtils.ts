@@ -29,7 +29,7 @@ export const DEFINED_KEY:string = "definedKey";
 export const DEFINED_KEY_VALUE:string = "definedKeyValue";
 export const TEMPLATE_VALUE:string = "templateValue";
 export const buildRequest:Function = function(method:string):HttpRequest {
-  let request:HttpRequest = (
+  const request:HttpRequest = (
     {
       getMethod():string { return method; }
     } as HttpRequest
@@ -37,7 +37,7 @@ export const buildRequest:Function = function(method:string):HttpRequest {
   return request;
 };
 export const buildResponse:Function = function():HttpResponse {
-  let response:HttpResponse = (
+  const response:HttpResponse = (
     {
       status(statusCode:number):HttpResponse { return this; }
     } as HttpResponse

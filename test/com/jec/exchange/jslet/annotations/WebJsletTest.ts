@@ -15,8 +15,7 @@
 //   limitations under the License.
 
 import "mocha";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import * as sinon from "sinon";
 import {DecoratorConnectorManager, JcadContextManager, JcadContext} from "jec-commons";
 import {JsletConnectorRefs} from "../../../../../../src/com/jec/exchange/jslet/jcad/JsletConnectorRefs";
 
@@ -27,21 +26,28 @@ import * as WebJsletAnnotation from "../../../../../../src/com/jec/exchange/jsle
 import * as utils from "../../../../../../utils/test-utils/utilities/WebJsletTestUtils";
 import * as jsletParams from "../../../../../../utils/test-utils/classes/TestJsletParams";
 
-// Chai declarations:
-const expect:any = chai.expect;
-chai.use(spies);
-
 // Test:
 describe("WebJslet", ()=> {
 
   let context:JcadContext = null;
+  let getContextSpy:any = null;
+  let getDecoratorSpy:any = null;
+  let annotationSpy:any = null;
+  let decorateSpy:any = null;
 
   before(()=> {
+    getContextSpy = sinon.spy(JcadContextManager.getInstance(), "getContext");
+    getDecoratorSpy =
+             sinon.spy(DecoratorConnectorManager.getInstance(), "getDecorator");
+    annotationSpy = sinon.spy(WebJsletAnnotation, "WebJslet");
+    decorateSpy = sinon.spy(utils.TEST_DECORATOR, "decorate");
     context = utils.initContext();
+    utils.buildClassRef();
   });
 
   after(()=> {
     utils.resetContext(context);
+    sinon.restore();
   });
 
   beforeEach(()=> {
@@ -50,25 +56,28 @@ describe("WebJslet", ()=> {
 
   describe("@WebJslet", ()=> {
 
-    let ctxmSpy:any = chai.spy.on(JcadContextManager.getInstance(), "getContext");
-    let dcmSpy:any = chai.spy.on(DecoratorConnectorManager.getInstance(), "getDecorator");
-    let decoratorSpy:any = chai.spy.on(utils.TEST_DECORATOR, "decorate");
-    let webJsletSpy:any = chai.spy.on(WebJsletAnnotation, "WebJslet");
-    
     it("should invoke the JcadContextManager with the JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF reference", function() {
-      expect(ctxmSpy).to.have.been.called.with(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF);
+      sinon.assert.calledOnce(getContextSpy);
+      sinon.assert.calledWith(
+        getContextSpy, JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF
+      );
     });
 
     it("should invoke the DecoratorConnectorManager with the JsletConnectorRefs.AFTER_CONNECTOR_REF reference and the correct JCAD context", function() {
-      expect(dcmSpy).to.have.been.called.with(JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF, context);
+      sinon.assert.calledOnce(getDecoratorSpy);
+      sinon.assert.calledWith(
+        getDecoratorSpy, JsletConnectorRefs.WEB_JSLET_CONNECTOR_REF, context
+      );
     });
     
     it("should invoke the annotation decorator with the specified parameters", function() {
-      expect(webJsletSpy).to.have.been.called.with(jsletParams.PARAMS);
+      sinon.assert.calledOnce(annotationSpy);
+      //sinon.assert.calledWith(getDecoratorSpy, jsletParams.PARAMS);
     });
     
     it("should invoke the registered decorator with the specified parameters", function() {
-      expect(decoratorSpy).to.have.been.called.with(jsletParams.PARAMS);
+      sinon.assert.calledOnce(decorateSpy);
+      //sinon.assert.calledWith(getDecoratorSpy, jsletParams.PARAMS);
     });
   });
 });
